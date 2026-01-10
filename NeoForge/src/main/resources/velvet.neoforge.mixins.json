@@ -2,10 +2,9 @@
 	"required": true,
 	"minVersion": "0.8",
 	"package": "dev.cammiescorner.velvet.neoforge.mixin",
+	"plugin": "dev.cammiescorner.velvet.mixin.VelvetMixinPlugin",
 	"compatibilityLevel": "JAVA_21",
-	"mixins": [
-
-	],
+	"mixins": [],
 	"injectors": {
 		"defaultRequire": 1
 	},

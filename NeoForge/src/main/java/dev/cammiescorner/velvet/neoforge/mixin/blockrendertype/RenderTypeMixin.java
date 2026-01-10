@@ -59,6 +59,11 @@ public abstract class RenderTypeMixin extends RenderStateShard implements NeoRen
 
 	@Inject(method = "<init>", at = @At("RETURN"))
 	private void construct(String name, VertexFormat format, VertexFormat.Mode mode, int bufferSize, boolean affectsCrumbling, boolean sortOnUpload, Runnable setupState, Runnable clearState, CallbackInfo ci) {
+		/*
+		Prevents the game from crashing due to incompatibility with Iris.
+		When Iris is installed, rendering a block outline causes an immediate crash.
+		Should the mixin fail to be disabled by the plugin, this is used as a fallback to prevent the crash.
+		 */
 		if (!VelvetMixinPlugin.isAllowRenderLayerMixins()) return;
 
 		if (velvet$CACHED_LAYERS == null) {
