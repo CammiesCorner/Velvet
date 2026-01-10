@@ -29,7 +29,7 @@ import java.util.Set;
 
 public final class VelvetMixinPlugin implements IMixinConfigPlugin {
 	private static final Logger LOGGER = LogManager.getLogger("Velvet");
-	public static final boolean ALLOW_RENDER_LAYER_MIXINS;
+	private static final boolean ALLOW_RENDER_LAYER_MIXINS;
 
 	static {
 		if(Velvet.LOADER.isModLoaded("canvas")) {
@@ -46,6 +46,10 @@ public final class VelvetMixinPlugin implements IMixinConfigPlugin {
 
 			ALLOW_RENDER_LAYER_MIXINS = true;
 		}
+	}
+
+	public static boolean isAllowRenderLayerMixins() {
+		return ALLOW_RENDER_LAYER_MIXINS;
 	}
 
 	@Override
