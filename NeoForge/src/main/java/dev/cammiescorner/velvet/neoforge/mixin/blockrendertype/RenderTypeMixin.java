@@ -3,6 +3,7 @@ package dev.cammiescorner.velvet.neoforge.mixin.blockrendertype;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.mojang.blaze3d.vertex.VertexFormat;
+import dev.cammiescorner.velvet.mixin.VelvetMixinPlugin;
 import dev.cammiescorner.velvet.neoforge.impl.NeoRenderType;
 import dev.cammiescorner.velvet.impl.RenderTypeUtil;
 import net.minecraft.client.renderer.RenderStateShard;
@@ -58,6 +59,8 @@ public abstract class RenderTypeMixin extends RenderStateShard implements NeoRen
 
 	@Inject(method = "<init>", at = @At("RETURN"))
 	private void construct(String name, VertexFormat format, VertexFormat.Mode mode, int bufferSize, boolean affectsCrumbling, boolean sortOnUpload, Runnable setupState, Runnable clearState, CallbackInfo ci) {
+		if (!VelvetMixinPlugin.ALLOW_RENDER_LAYER_MIXINS) return;
+
 		if (velvet$CACHED_LAYERS == null) {
 			velvet$CACHED_LAYERS = new WeakHashMap<>();
 		}
