@@ -48,6 +48,10 @@ public final class VelvetMixinPlugin implements IMixinConfigPlugin {
 		}
 	}
 
+	public static boolean isAllowRenderLayerMixins() {
+		return ALLOW_RENDER_LAYER_MIXINS;
+	}
+
 	@Override
 	public void onLoad(String mixinPackage) {
 		// NO-OP
